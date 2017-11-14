@@ -21,6 +21,8 @@ namespace Poloniex
 	    public Int64 Sequence { get; set; }
 	}
 
+
+	[JsonConverter(typeof(OrderBookEntryConverter))]
 	public class OrderBookEntry
 	{
 		public decimal PriceLevel { get; set; }
