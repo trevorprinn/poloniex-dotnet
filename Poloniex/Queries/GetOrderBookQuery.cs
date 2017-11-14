@@ -17,7 +17,7 @@ namespace Poloniex
 					{"depth", depth.ToString()}
 				}
 			}; 
-			return await client.SendRequestAsync<OrderBook>(request); 
+			return await client.SendRequestAsync<OrderBook>(request).ConfigureAwait(false); 
 		}
 
 		public static async Task<OrderBook> GetOrderBookAsync(this PoloniexClient client, String currencyPair )
@@ -30,7 +30,7 @@ namespace Poloniex
 					{"currencyPair", currencyPair} 
 				}
 			};
-			return await client.SendRequestAsync<OrderBook>(request);
+			return await client.SendRequestAsync<OrderBook>(request).ConfigureAwait(false);
 		}
 
 
@@ -46,7 +46,7 @@ namespace Poloniex
 					{"depth", depth.ToString()}
 				}
 			};
-			return await client.SendRequestAsync<Dictionary<string, OrderBook>>(request);
+			return await client.SendRequestAsync<Dictionary<string, OrderBook>>(request).ConfigureAwait(false);
 		}
 
 		public static async Task<Dictionary<string, OrderBook>> GetOrderBooksAsync(this PoloniexClient client)
@@ -59,7 +59,7 @@ namespace Poloniex
 					{"currencyPair", "all"}
 				}
 			};
-			return await client.SendRequestAsync<Dictionary<string, OrderBook>>(request);
+			return await client.SendRequestAsync<Dictionary<string, OrderBook>>(request).ConfigureAwait(false);
 		}
 	}
 }

@@ -34,7 +34,11 @@ namespace Poloniex.Converters
 				Volume = reader.ReadAsDecimal().Value
 			};
 
-			reader.Read();
+			while (reader.TokenType != JsonToken.EndArray)
+			{
+				reader.Read();
+			}
+
 			return entry;
 		}
 
