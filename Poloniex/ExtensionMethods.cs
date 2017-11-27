@@ -28,14 +28,12 @@ namespace Poloniex
 
 		public static String ToQueryString(this NameValueCollection nvc)
 		{
-			var array = (
-				from key in nvc.AllKeys
+			var array = from key in nvc.AllKeys
 				from value in nvc.GetValues(key)
 				where value != null
 				//FIXME: I didnt want to depend on Microsoft.AspNet.WebUtilities to get WebUtility.UrlEncode since this should be internal anyways.
 				//select String.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(value))
-				select String.Format("{0}={1}", key, value)
-			).ToArray();
+				select String.Format("{0}={1}", key, value) ;
 
 			return String.Join("&", array);
 		}
