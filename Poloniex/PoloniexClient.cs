@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -64,7 +65,7 @@ namespace Poloniex
 				Content = new NameValueCollection
 				{
 					{ "command", request.Command },
-					{ "nonce", (DateTime.UtcNow.ToUnixTimestamp() * 100000).ToString() },
+					{ "nonce", (DateTime.UtcNow.ToUnixTimestamp() * 100000).ToString(CultureInfo.InvariantCulture) },
 					request.Parameters
 				}.ToFormUrlEncodedContent()
 			};
